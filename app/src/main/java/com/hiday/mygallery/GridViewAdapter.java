@@ -1,6 +1,7 @@
 package com.hiday.mygallery;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +16,9 @@ import java.util.ArrayList;
 
 public class GridViewAdapter extends ArrayAdapter<Model_images> {
 
-    Context context;
-    ViewHolder viewHolder;
-    ArrayList<Model_images> al_menu = new ArrayList<>();
-    int int_position;
+    private Context context;
+    private ArrayList<Model_images> al_menu = new ArrayList<>();
+    private int int_position;
 
 
     public GridViewAdapter(Context context, ArrayList<Model_images> al_menu,int int_position) {
@@ -57,9 +57,11 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
     }
 
 
+    @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
 
+        ViewHolder viewHolder;
         if (convertView == null) {
 
             viewHolder = new ViewHolder();

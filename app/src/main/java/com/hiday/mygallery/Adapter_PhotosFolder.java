@@ -1,6 +1,7 @@
 package com.hiday.mygallery;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +17,11 @@ import java.util.ArrayList;
 
 public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
 
-    Context context;
-    ViewHolder viewHolder;
-    ArrayList<Model_images> al_menu = new ArrayList<>();
+    private Context context;
+    private ArrayList<Model_images> al_menu = new ArrayList<>();
 
 
-    public Adapter_PhotosFolder(Context context, ArrayList<Model_images> al_menu) {
+    Adapter_PhotosFolder(Context context, ArrayList<Model_images> al_menu) {
         super(context, R.layout.adapter_photosfolder, al_menu);
         this.al_menu = al_menu;
         this.context = context;
@@ -31,8 +31,6 @@ public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
 
     @Override
     public int getCount() {
-
-        Log.e("ADAPTER LIST SIZE", al_menu.size() + "");
         return al_menu.size();
     }
 
@@ -56,9 +54,11 @@ public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
     }
 
 
+    @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
+        ViewHolder viewHolder;
         if (convertView == null) {
 
             viewHolder = new ViewHolder();
